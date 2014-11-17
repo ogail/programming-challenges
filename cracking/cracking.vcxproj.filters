@@ -36,5 +36,8 @@
     <ClCompile Include="1.5-compress-string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1.6-rotate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
