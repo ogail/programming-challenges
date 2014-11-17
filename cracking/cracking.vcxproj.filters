@@ -27,5 +27,8 @@
     <ClCompile Include="1.2-reverse-string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1.3-string-permutation-of-another.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
