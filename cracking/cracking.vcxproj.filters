@@ -42,5 +42,8 @@
     <ClCompile Include="1.7-zeroize.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="1.8-is-rotation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
