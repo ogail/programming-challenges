@@ -79,7 +79,10 @@
     <ClCompile Include="1.2-reverse-string.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="1.3-string-permutation-of-another.cpp" />
+    <ClCompile Include="1.3-string-permutation-of-another.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="1.4-replace-space.cpp" />
     <ClCompile Include="2.1-remove-duplicate.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
