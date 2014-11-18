@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="2.1-remove-duplicate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="2.2-kth-element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

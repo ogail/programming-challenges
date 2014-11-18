@@ -1,14 +1,73 @@
 #include <stdio.h>
 #include <assert.h>
 #include <vector>
+#include <unordered_set>
 
 using namespace std;
+
+struct double_node
+{
+    double_node *next;
+    double_node *prev;
+    int data;
+};
 
 struct node
 {
     char value;
     node* next;
 };
+
+void remove_duplicates(double_node* curr)
+{
+    unordered_set<int> elements;
+
+    while (curr)
+    {
+        if (elements.count(curr->data) != 0)
+        {
+            double_node *old = curr;
+            curr = old->next;
+            if (old->prev) old->prev->next = old->next;
+            if (old->next) old->next->prev = old->prev;
+            old->prev = nullptr;
+            old->next = nullptr;
+        }
+        else
+        {
+            elements.insert(curr->data);
+            curr = curr->next;
+        }
+    }
+}
+
+void remove_duplicates_no_buffer(double_node* head)
+{
+    double_node* curr = head;
+
+    while (curr)
+    {
+        double_node* temp = curr->next;
+
+        while (temp)
+        {
+            if (temp->data == curr->data)
+            {
+                double_node *old = temp;
+                temp = old->next;
+                if (old->prev) old->prev->next = old->next;
+                if (old->next) old->next->prev = old->prev;
+                old->prev = nullptr;
+                old->next = nullptr;
+            }
+            else
+            {
+                temp = temp->next;
+            }
+        }
+        curr = curr->next;
+    }
+}
 
 void remove_duplicates(node* head)
 {
