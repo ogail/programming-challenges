@@ -48,5 +48,8 @@
     <ClCompile Include="2.1-remove-linked-list-duplicates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="3.5-queue-from-stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
