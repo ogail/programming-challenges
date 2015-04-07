@@ -7,7 +7,7 @@ using namespace std;
 
 struct node
 {
-    node *next;
+    node *nxt;
     char data;
 };
 
@@ -17,19 +17,19 @@ void remove_node(node* n)
     {
         return;
     }
-    else if (n->next == nullptr)
+    else if (n->nxt == nullptr)
     {
         delete n;
     }
     else
     {
-        node* next = n->next;
+        node* next = n->nxt;
 
         // copy data from next to n
         n->data = next->data;
 
         // change the n next pointer to be next next
-        n->next = next->next;
+        n->nxt = next->nxt;
 
         // delete next node
         delete next;
@@ -42,20 +42,20 @@ void run_tests()
     node* head = nullptr;
     node* n = new node();
     n->data = 'a';
-    n->next = new node();
+    n->nxt = new node();
     head = n;
     testCases.push_back(n);
-    n = n->next;
+    n = n->nxt;
     n->data = 'b';
-    n->next = new node();
+    n->nxt = new node();
     testCases.push_back(n);
-    n = n->next;
+    n = n->nxt;
     n->data = 'c';
-    n->next = new node();
+    n->nxt = new node();
     testCases.push_back(n);
-    n = n->next;
+    n = n->nxt;
     n->data = 'd';
-    n->next = new node();
+    n->nxt = new node();
     testCases.push_back(n);
 
     for (node* testCase : testCases)
@@ -68,7 +68,7 @@ void run_tests()
             while (curr)
             {
                 assert(curr->data != data);
-                curr = curr->next;
+                curr = curr->nxt;
             }
             printf("%c PASSED!", data);
         }

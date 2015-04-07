@@ -2,7 +2,7 @@
 
 struct node
 {
-    node *next;
+    node *nxt;
     int data;
 };
 
@@ -10,10 +10,10 @@ node* find_element(node* head, unsigned int pos)
 {
     int length = 0;
     node *curr = head;
-    while (curr = curr->next) ++length;
+    while (curr = curr->nxt) ++length;
     int target = length - pos;
     curr = head;
-    while (curr && target--) curr = curr->next;
+    while (curr && target--) curr = curr->nxt;
 
     return curr;
 }
@@ -23,7 +23,7 @@ void print_list(node* curr)
     while (curr)
     {
         printf("%d ", curr->data);
-        curr = curr->next;
+        curr = curr->nxt;
     }
 
     printf("\n");
@@ -40,7 +40,7 @@ int main()
     {
         node *next = new node();
         next->data = i;
-        curr->next = next;
+        curr->nxt = next;
         curr = next;
     }
 

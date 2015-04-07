@@ -15,7 +15,7 @@ struct double_node
 struct node
 {
     char value;
-    node* next;
+    node* nxt;
 };
 
 void remove_duplicates(double_node* curr)
@@ -75,7 +75,7 @@ void remove_duplicates(node* head)
 
     while (n)
     {
-        node* curr = n->next;
+        node* curr = n->nxt;
         node* prev = n;
 
         while (curr)
@@ -87,10 +87,10 @@ void remove_duplicates(node* head)
             if (curr->value == n->value)
             {
                 // change prev->next to point to curr->next
-                prev->next = curr->next;
+                prev->nxt = curr->nxt;
 
                 // change curr->next so it does not point to any node
-                curr->next = nullptr;
+                curr->nxt = nullptr;
 
                 // delete the curr node
                 delete curr;
@@ -100,10 +100,10 @@ void remove_duplicates(node* head)
             }
 
             prev = curr;
-            curr = curr->next;
+            curr = curr->nxt;
         }
 
-        n = n->next;
+        n = n->nxt;
     }
 }
 
@@ -125,8 +125,8 @@ void run_tests()
         for (char letter : item.first)
         {
             curr->value = letter;
-            curr->next = new node();
-            curr = curr->next;
+            curr->nxt = new node();
+            curr = curr->nxt;
         }
 
         remove_duplicates(head);
@@ -135,11 +135,11 @@ void run_tests()
         for (int i = 0; i < item.second.size(); ++i)
         {
             assert(item.second[i] == curr->value);
-            curr = curr->next;
+            curr = curr->nxt;
         }
 
         // To make sure that the lengths are same
-        assert(curr->next == nullptr);
+        assert(curr->nxt == nullptr);
 
         printf("%s PASSED\n", item.first.c_str());
     }

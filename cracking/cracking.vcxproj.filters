@@ -51,5 +51,8 @@
     <ClCompile Include="2.3-remove-middle-node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="2.4-linked-list-partition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
