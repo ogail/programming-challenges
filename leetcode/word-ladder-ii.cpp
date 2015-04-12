@@ -36,6 +36,9 @@ public:
         string word;
 
         q.push(start);
+
+        int shortest = getShortestPath(start, end, dict);
+
         while (!q.empty()) {
             word = q.front();
             q.pop();
@@ -66,7 +69,7 @@ public:
         }
 
         vector<string> path;
-        populatePaths(end, start, paths, path, found);
+        populatePaths(end, start, paths, path, found, shortest);
 
         return found;
     }
@@ -76,8 +79,15 @@ public:
         string end,
         unordered_map<string, unordered_set<string>> &paths,
         vector<string> &path,
-        vector<vector<string>> &found) {
+        vector<vector<string>> &found,
+        int shortest) {
         path.push_back(curr);
+
+        if (path.size() > shortest) {
+            path.pop_back();
+            return;
+        }
+
         if (curr.compare(end) == 0) {
             found.push_back(vector<string>(path.rbegin(), path.rend()));
             path.pop_back();
@@ -86,8 +96,35 @@ public:
 
         const unordered_set<string> &neighbirs = paths[curr];
         for (string neighbir : neighbirs) {
-            populatePaths(neighbir, end, paths, path, found);
+            populatePaths(neighbir, end, paths, path, found, shortest);
         }
         path.pop_back();
+    }
+
+    int getShortestPath(string start, string end, unordered_set<string> &dict)
+    {
+        queue<pair<string, int>> q;
+        int shortest = 0;
+        unordered_set<string> next;
+        unordered_set<string> visited = { start };
+
+        q.push(make_pair(start, 1));
+        while (!q.empty()) {
+            pair<string, int> top = q.front();
+            q.pop();
+            getNextWords(top.first, dict, next);
+            for (string word : next) {
+                if (visited.count(word) == 0) {
+                    if (word.compare(end) == 0) {
+                        return top.second + 1;
+                    }
+
+                    q.push(make_pair(word, top.second + 1));
+                    visited.insert(word);
+                }
+            }
+        }
+
+        return 0;
     }
 };
