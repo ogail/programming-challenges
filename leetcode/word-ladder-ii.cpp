@@ -13,16 +13,16 @@ class Solution {
 public:
     void getNextWords(string search, unordered_set<string> &dict, vector<string> &next) {
         next.clear();
-        for (string word : dict) {
-            int diff = 0;
-            int i = 0;
-            while (diff < 2 && i < search.size()) {
-                diff += search[i] != word[i];
-                ++i;
-            }
-
-            if (diff == 1) {
-                next.push_back(word);
+        
+        for (int i = 0; i < search.size(); ++i) {
+            char letter = 'a';
+            while (letter <= 'z') {
+                string temp = search;
+                temp[i] = letter;
+                if (dict.count(temp) != 0 && search.compare(temp) != 0) {
+                    next.push_back(temp);
+                }
+                letter++;
             }
         }
     }
